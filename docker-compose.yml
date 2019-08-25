@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  ministra_db:
+    container_name: ministra_db
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=docker
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./conf/mysql:/etc/mysql/mysql.conf.d
+
+  ministra_php:
+    container_name: ministra_php
+    image: php:7.2-fpm
+    volumes:
+      - ./src:/var/www/html
+
+  ministra_nginx:
+    container_name: ministra_nginx
+    image: nginx:latest
+    depends_on:
+      - ministra_db
+      - ministra_php
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./conf/nginx/conf.d/:/etc/nginx/conf.d
