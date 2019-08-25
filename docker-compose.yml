@@ -6,10 +6,10 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      - MYSQL_DATABASE=mydb
-      - MYSQL_USER=myuser
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_DATABASE=ministra
+      - MYSQL_USER=ministra
+      - MYSQL_PASSWORD=L7Pfp6Yj9xcDF2u6
+      - MYSQL_ROOT_PASSWORD=d9xVseLVh6JTYZqB
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./conf/mysql:/etc/mysql/mysql.conf.d
