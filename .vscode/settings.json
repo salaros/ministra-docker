@@ -1,0 +1,6 @@
+{
+    // Exclude files from File Explorer
+    "files.exclude": {
+        "data/*":            true,
+    },
+}
