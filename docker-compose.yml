@@ -5,30 +5,42 @@ services:
     container_name: ministra_db
     image: mysql:5.7
     restart: always
+    ports:
+      - "3306:3306"
     environment:
-      - MYSQL_DATABASE=ministra
-      - MYSQL_USER=ministra
-      - MYSQL_PASSWORD=L7Pfp6Yj9xcDF2u6
-      - MYSQL_ROOT_PASSWORD=d9xVseLVh6JTYZqB
+      - MYSQL_DATABASE=stalker_db
+      - MYSQL_USER=stalker
+      - MYSQL_PASSWORD=1
+      - MYSQL_ROOT_PASSWORD=mysql
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./conf/mysql:/etc/mysql/mysql.conf.d
 
   ministra_php:
     container_name: ministra_php
-    image: php:7.2-fpm
+    depends_on:
+      - ministra_db
+    build:
+      context: ./src
+      dockerfile: ./build/Dockerfile
+      args:
+        buildno: 1
+    ports:
+      - "8080:8080"
+      - "4443:4443"
     volumes:
       - ./src:/var/www/html
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/apache2/ports.conf:/etc/apache2/ports.conf
 
   ministra_nginx:
     container_name: ministra_nginx
     image: nginx:latest
     depends_on:
-      - ministra_db
       - ministra_php
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./src:/var/www/html
-      - ./conf/nginx/conf.d/:/etc/nginx/conf.d
+      - ./conf/nginx:/etc/nginx/conf.d
