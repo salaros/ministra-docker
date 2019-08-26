@@ -5,15 +5,17 @@ services:
     container_name: ministra_db
     image: mysql:5.7
     restart: always
-    ports:
-      - "3306:3306"
+#    ports:
+#      - "3306:3306"
     environment:
       - MYSQL_DATABASE=stalker_db
       - MYSQL_USER=stalker
-      - MYSQL_PASSWORD=1
-      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_PASSWORD=QRcTrYaxujYewd35
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
     volumes:
       - ./data/mysql:/var/lib/mysql
+      - ./src/db/delta:/tmp/mysql/delta
       - ./conf/mysql:/etc/mysql/mysql.conf.d
 
   ministra_php:
@@ -25,9 +27,9 @@ services:
       dockerfile: ./build/Dockerfile
       args:
         buildno: 1
-    ports:
-      - "8080:8080"
-      - "4443:4443"
+#    ports:
+#      - "8080:8080"
+#      - "4443:4443"
     volumes:
       - ./src:/var/www/html
       - ./conf/php/php.ini:/usr/local/etc/php/php.ini
