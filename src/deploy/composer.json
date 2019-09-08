@@ -1,0 +1,51 @@
+{
+    "config": {
+      "vendor-dir": "../admin/vendor"
+    },
+    "require": {
+        "doctrine/cache": "<=1.5.4",
+        "silex/silex": "2.0",
+        "symfony/browser-kit": "~2.3",
+        "symfony/console": "~2.3",
+        "symfony/config": "~2.3",
+        "symfony/yaml": "~2.3",
+        "symfony/css-selector": "~2.3",
+        "symfony/dom-crawler": "~2.3",
+        "symfony/filesystem": "~2.3",
+        "symfony/finder": "~2.3",
+        "symfony/form": "~2.3",
+        "symfony/locale": "~2.3",
+        "symfony/process": "~2.3",
+        "symfony/security": "~2.3",
+        "symfony/serializer": "~2.3",
+        "symfony/translation": "~2.3",
+        "symfony/validator": ">=2.5",
+        "symfony/monolog-bridge": "~2.3",
+        "symfony/twig-bridge": "~2.3",
+        "twig/twig": "~1.8",
+        "doctrine/dbal": ">=2.2.0,<2.4.0-dev",
+        "swiftmailer/swiftmailer": "5.*",
+        "imagine/imagine" : "*",
+        "w6/silex-imagine-provider": "dev-master",
+        "nymo/silex-twig-breadcrumb-extension":"~2.0",
+        "umpirsky/twig-gettext-extractor": "1.1.*",
+        "mtdowling/cron-expression": "1.0.*",
+        "codeguy/upload": ">=1",
+        "monolog/monolog": "*",
+        "pulse00/ffmpeg-bundle": ">=0.5.2",
+        "symfony/asset": "~2.8",
+        "symfony/assetic-bundle": "~2.8",
+        "mheap/Silex-Assetic": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "../admin/src",
+            "Controller": "../admin/src/Controller",
+            "Model": "../admin/src/Model",
+            "Lib": "../admin/src/Lib"
+        },
+        "classmap": [
+            "../server/lib/"
+        ]
+    }
+}

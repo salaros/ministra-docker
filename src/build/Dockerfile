@@ -31,6 +31,6 @@ RUN curl -s https://getcomposer.org/installer | php && \
     mv -v composer.phar composer/ && \
     php composer/composer.phar global require hirak/prestissimo && \
     php composer/composer.phar global require phing/phing && \
-    php composer/composer.phar install --no-dev
+    php -d memory_limit=-1 composer/composer.phar install --no-dev
 
 RUN a2enmod rewrite
