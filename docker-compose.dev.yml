@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+  ministra_db:
+    ports:
+      - "3306:3306"
+
+  ministra_php:
+    ports:
+      - "8080:8080"
+      - "4443:4443"

@@ -5,8 +5,6 @@ services:
     container_name: ministra_db
     image: mysql:5.7
     restart: always
-    ports:
-      - "3306:3306"
     environment:
       - MYSQL_DATABASE=stalker_db
       - MYSQL_USER=stalker
@@ -27,9 +25,6 @@ services:
       dockerfile: ./build/Dockerfile
       args:
         buildno: 1
-    ports:
-      - "8080:8080"
-#      - "4443:4443"
     volumes:
       - ./src:/var/www/html/stalker_portal
       - ./conf/php/php.ini:/usr/local/etc/php/php.ini
